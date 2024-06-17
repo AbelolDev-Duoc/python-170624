@@ -15,13 +15,24 @@ def Registrar_Trabajador():
     }
 
     trabajadores[nombre] = trabajador
-    print("Se ha registradro con exitos")
+    print(trabajadores)
+    print("Se ha registradro con exito al trabajador")
+    input("Presione ENTER para continuar")
+
+    return
+
+def Listar_Trabajadores():
+    for trabajador in trabajadores:
+        print(trabajador)
+        input("Presione ENTER para continuar")
+    return
 
 
 while validacion_salida == False:
+    system("cls")
     print("Seleccione una opción: ")
     print("1-) Registrar trabajador")
-    print("2-) ")
+    print("2-) Listar todos los trabajadores")
     print("3-) ")
     print("4-) ")
     try:
@@ -30,7 +41,7 @@ while validacion_salida == False:
             case 1:
                 Registrar_Trabajador()
             case 2:
-                pass
+                Listar_Trabajadores()
             case 3:
                 pass
             case 4:
