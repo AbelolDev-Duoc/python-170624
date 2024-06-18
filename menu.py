@@ -1,29 +1,34 @@
 from os import system
 
 validacion_salida = False
-trabajadores = {}
-
+trabajadores = []
 
 def Registrar_Trabajador():
     nombre = input("Ingrese el nombre y apellido del trabajador: ")
     cargo = input("Ingrese el cargo del trabajador: ")
     sueldo_bruto = int(input("Ingrese el sueldo bruto del trabajador: "))
+    desc_salud =  int(round(sueldo_bruto *  7/100,0))
+    desc_afp =  int(round(sueldo_bruto*12/100,0))
+    liquido = sueldo_bruto - desc_salud - desc_afp
 
-    trabajador = {
-        'cargo':cargo,
-        'sueldo_bruto':sueldo_bruto
-    }
-
-    trabajadores[nombre] = trabajador
-    print(trabajadores)
+    trabajadores.append({
+            "nombre": nombre,
+            "cargo": cargo,
+            "sueldo_bruto": sueldo_bruto,
+            "desc_salud": desc_salud,
+            "desc_afp": desc_afp,
+            "liquido": liquido,
+        })
+    
     print("Se ha registradro con exito al trabajador")
     input("Presione ENTER para continuar")
 
     return
 
 def Listar_Trabajadores():
+    print(f"Nombres\t    Cargo\t    Sueldo_bruto\t    Desc_Salud\t    Desc_afp\t    Sueldo_líquido\t")
     for trabajador in trabajadores:
-        print(trabajador)
+        print(f"{trabajador['nombre']}\t    {trabajador['cargo']}\t    {trabajador['sueldo_bruto']}\t    {trabajador['desc_salud']}\t    {trabajador['desc_afp']}\t    {trabajador['liquido']}\t") #No se puede hacer un recorrido para N llaves
         input("Presione ENTER para continuar")
     return
 
@@ -34,7 +39,7 @@ while validacion_salida == False:
     print("1-) Registrar trabajador")
     print("2-) Listar todos los trabajadores")
     print("3-) ")
-    print("4-) ")
+    print("4-) Salir del programa")
     try:
         opcion = int(input(">>> "))
         match opcion:
