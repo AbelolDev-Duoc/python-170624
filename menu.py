@@ -32,13 +32,26 @@ def Listar_Trabajadores():
         input("Presione ENTER para continuar")
     return
 
+def Imprimir_Panilla_Sueldos(trabajadores:list):
+    with open("Datos.txt","w",) as archivo:
+        for trabajador in trabajadores:
+            archivo.write(F"Nombre: {trabajador['nombre']}\n")
+            archivo.write(F"Cargo: {trabajador['cargo']}\n")
+            archivo.write(F"Sueldo bruto: {trabajador['sueldo_bruto']}\n")
+            archivo.write(F"Descuento de salud: {trabajador['desc_salud']}\n")
+            archivo.write(F"Descuento de AFP: {trabajador['desc_afp']}\n")
+            archivo.write(F"Sueldo liquido: {trabajador['liquido']}\n")
+    print("Se han almacenado los datos")
+    input("Presione ENTER para continuar")
+
+    return
 
 while validacion_salida == False:
     system("cls")
     print("Seleccione una opción: ")
     print("1-) Registrar trabajador")
     print("2-) Listar todos los trabajadores")
-    print("3-) ")
+    print("3-) Imprimir planilla de sueldos")
     print("4-) Salir del programa")
     try:
         opcion = int(input(">>> "))
@@ -48,7 +61,7 @@ while validacion_salida == False:
             case 2:
                 Listar_Trabajadores()
             case 3:
-                pass
+                Imprimir_Panilla_Sueldos(trabajadores)
             case 4:
                 print("Adíos...")
                 validacion_salida = True
